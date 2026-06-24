@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakhile Mkize — QA Automation Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --off: #f7f7f5;
+      --ink: #1a1a1a;
+      --mid: #555555;
+      --light: #999999;
+      --rule: #e0e0e0;
+      --accent: #2563eb;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--off);
+      border-bottom: 1px solid var(--rule);
+      padding: 60px 0 48px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 36px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #dce8ff;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .header-text .tagline {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .header-text p {
+      color: var(--mid);
+      max-width: 540px;
+      font-size: 0.95rem;
+    }
+
+    /* ── CONTACT BAR ── */
+    .contact-bar {
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 0;
+    }
+
+    .contact-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.83rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+    }
+
+    .contact-item:hover {
+      color: #fff;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN ── */
+    main {
+      padding: 56px 0 80px;
+    }
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── ABOUT ── */
+    .about p {
+      color: var(--mid);
+    }
+
+    /* ── SKILLS GROUPS ── */
+    .skill-group {
+      margin-bottom: 18px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--off);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 0.83rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── ENTRIES ── */
+    .entry {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0 28px;
+      margin-bottom: 32px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-date {
+      font-size: 0.8rem;
+      color: var(--light);
+      padding-top: 3px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .entry-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .entry-body .org {
+      font-size: 0.88rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .entry-body p,
+    .entry-body li {
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+
+    .entry-body ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .entry-body li {
+      margin-bottom: 4px;
+    }
+
+    /* ── CERTS ── */
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+
+    .cert-icon {
+      width: 32px;
+      height: 32px;
+      background: #dce8ff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--light);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+      }
+
+      .entry {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-date {
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="avatar">SM</div>
+        <div class="header-text">
+          <div class="tagline">QA Automation Engineer</div>
+          <h1>Sakhile Mkize</h1>
+          <p>
+            Detail-oriented QA Automation Engineer with over 6 years of hands-on
+            experience in test automation, functional testing, and quality assurance.
+            ISTQB certified and passionate about delivering high-quality software
+            through efficient testing practices and continuous improvement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="container">
+      <span class="contact-item"><span class="dot"></span> Brackenhurst, Alberton</span>
+      <a class="contact-item" href="tel:0781689655"><span class="dot"></span> 078 168 9655</a>
+      <a class="contact-item" href="mailto:mkizesakhile17@gmail.com"><span class="dot"></span>
+        mkizesakhile17@gmail.com</a>
+      <a class="contact-item" href="https://www.linkedin.com/in/sakhile-mkize-87b7b383/" target="_blank"><span
+          class="dot"></span> LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <!-- ABOUT -->
+      <section class="about">
+        <div class="section-label">About Me</div>
+        <p>
+          I am a QA Automation Engineer based in Alberton, South Africa, with over
+          6 years of experience ensuring software quality across diverse projects and
+          industries. My career has taken me from IT field support all the way to
+          designing full automation frameworks used in production CI/CD pipelines.
+        </p>
+        <br />
+        <p>
+          I specialise in building robust test automation solutions using Cypress,
+          Selenium WebDriver, and Cucumber BDD. I have a strong track record of
+          integrating automated test suites into Azure DevOps and GitLab CI pipelines,
+          and I am comfortable working across functional, regression, API, performance,
+          and security testing. I am currently also furthering my skills through a
+          Software Engineering programme at HyperionDev, with a focus on Python and
+          Django backend development.
+        </p>
+        <br />
+        <p>
+          My passion is preventing defects before they reach users. I believe quality
+          is a team sport, and I enjoy collaborating closely with developers and
+          product teams to shift testing left and continuously raise the bar on
+          software reliability. My goal is to grow into a senior QA architect role
+          where I can shape testing strategy at an organisational level.
+        </p>
+      </section>
+
+      <!-- SKILLS -->
+      <section>
+        <div class="section-label">Skills &amp; Competencies</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Automation Tools</div>
+          <div class="tags">
+            <span class="tag">Cypress</span>
+            <span class="tag">Selenium WebDriver</span>
+            <span class="tag">Cucumber BDD</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Java (basic)</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">API &amp; CI/CD</div>
+          <div class="tags">
+            <span class="tag">Postman</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">GitLab CI</span>
+            <span class="tag">Git &amp; GitHub</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Testing Types</div>
+          <div class="tags">
+            <span class="tag">Functional</span>
+            <span class="tag">Regression</span>
+            <span class="tag">Integration</span>
+            <span class="tag">End-to-End</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Security</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Methodologies &amp; Tools</div>
+          <div class="tags">
+            <span class="tag">Agile</span>
+            <span class="tag">DevOps</span>
+            <span class="tag">JIRA</span>
+            <span class="tag">Data-driven Testing</span>
+            <span class="tag">BDD Frameworks</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section>
+        <div class="section-label">Work Experience</div>
+
+        <div class="entry">
+          <div class="entry-date">2023 – Present</div>
+          <div class="entry-body">
+            <h3>Test Automation Engineer</h3>
+            <div class="org">MCI</div>
+            <ul>
+              <li>Designed and maintained Cypress scripts for regression and functional testing.</li>
+              <li>Developed BDD test frameworks using Cucumber to improve test readability and team collaboration.</li>
+              <li>Automated smoke and regression tests, reducing manual test cycles by 40%.</li>
+              <li>Integrated automated test suites into Azure DevOps CI/CD pipelines.</li>
+              <li>Performed API testing using Postman to validate backend integrations.</li>
+              <li>Created and reviewed test documentation, test cases, and reports for all releases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2017 – 2023</div>
+          <div class="entry-body">
+            <h3>Test Automation &amp; Technical Support</h3>
+            <div class="org">ENERWEB</div>
+            <ul>
+              <li>Monitored application performance and availability.</li>
+              <li>Troubleshot software errors and resolved incidents, logging and tracking via JIRA.</li>
+              <li>Investigated and analysed root causes of production issues.</li>
+              <li>Managed service requests and problem tickets.</li>
+              <li>Deployed application updates and patches.</li>
+              <li>Coordinated with development teams for bug fixes and enhancements.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">2013 – 2017</div>
+          <div class="entry-body">
+            <h3>IT Field Technician</h3>
+            <div class="org">EOH DOJ</div>
+            <ul>
+              <li>Installed, configured, and maintained desktop systems and applications.</li>
+              <li>Provided support and training on operating systems and software usage.</li>
+              <li>Advised clients on hardware upgrades and performance optimisation.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <div class="section-label">Education</div>
+
+        <div class="entry">
+          <div class="entry-date">In Progress</div>
+          <div class="entry-body">
+            <h3>Software Engineering</h3>
+            <div class="org">HyperionDev</div>
+            <p>Backend web development with Python and Django, including REST APIs,
+              test-driven development, and deployment of web applications.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Completed</div>
+          <div class="entry-body">
+            <h3>Diploma in Software Testing</h3>
+            <div class="org">Software Testing Institute</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section>
+        <div class="section-label">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-icon">🏆</div>
+            ISTQB Foundation Level Certification
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">📋</div>
+            Diploma in Software Testing
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">⚙️</div>
+            Software Engineering — HyperionDev (in progress)
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2026 Sakhile Mkize &nbsp;·&nbsp; Hosted on GitHub Pages
+    </div>
+  </footer>
+
+</body>
+
+</html>
